@@ -20,13 +20,13 @@ public class User {
 	@Email(message = "Wrong mail format")
 	private final String email;
 	@Pattern(regexp = "^(?=.*[A-Z])(?=.*[0-9].*[0-9])(?=.*[a-z]).{8}$",
-		     message = "Una mayúscula, letras minúsculas, dos números, largo 8")
+		     message = "Wrong format: One uppercase, two numbers, rest must be lowercase and a maximum length of 8 characters")
 	private final String password;
 	private Token token;
 	private List<Phones> phones;
 	
 	@JsonCreator
-	public User(@NotNull(message = "Ingrese usuario") 
+	public User(@NotNull(message = "Input user") 
 	@JsonProperty("name") final String name, 
 	@JsonProperty("email") final String email,
 	@JsonProperty("password") final String password, 
