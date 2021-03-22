@@ -10,5 +10,4 @@ public class CoetestApplication {
 	public static void main(String[] args) {
 		SpringApplication.run(CoetestApplication.class, args);
 	}
-
 }

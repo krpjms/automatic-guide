@@ -18,10 +18,9 @@ public class DomainUserService implements UserService {
 		this.userRepository = userRepository;
 	}
 	
-
 	@Override
 	public UserResponse createUser(User user) throws MailExistsException {
-		logger.warn("Se verifica que el correo: "+ user.getEmail()+" no exista");
+		logger.warn("Verifiying: "+ user.getEmail()+" doesnt exist");
 		UserEntity correo = userRepository.findByEmail(user.getEmail());
 		
 		if(null == correo) {
@@ -30,6 +29,6 @@ public class DomainUserService implements UserService {
 			return ur;
 		}else
 			logger.error("Mail " + user.getEmail() + "already exists");
-			throw new MailExistsException("El correo ya fue almacenado en BD");
+			throw new MailExistsException("Mail already exists");
 	}
 }

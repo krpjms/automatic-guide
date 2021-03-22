@@ -28,7 +28,7 @@ public class PhoneEntity {
 	
 	public PhoneEntity(String number, String countryCode, String citycode) {
 		this.id= UUID.randomUUID();
-		logger.debug("ID Phone generado: "+ this.id.toString());
+		logger.debug("ID Phone generated: "+ this.id.toString());
 		this.number = number;
 		this.countryCode = countryCode;
 		this.citycode = citycode;
