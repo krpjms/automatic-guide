@@ -16,7 +16,7 @@ import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
-import com.example.coetest.exceptions.MailFoundException;
+import com.example.coetest.exceptions.MailExistsException;
 import com.example.coetest.domain.User;
 import com.example.coetest.domain.UserResponse;
 import com.example.coetest.domain.service.UserService;
@@ -36,13 +36,13 @@ public class UserController {
 	
 	@SuppressWarnings({ "unchecked", "rawtypes" })
 	@PostMapping(produces= MediaType.APPLICATION_JSON_VALUE, consumes = MediaType.APPLICATION_JSON_VALUE)
-	public ResponseEntity<UserResponse> createUser(@Valid @RequestBody final User user) throws MailFoundException{
+	public ResponseEntity<UserResponse> createUser(@Valid @RequestBody final User user) throws MailExistsException{
 		logger.info("Usuario"+ user.getName());
 		logger.info("fono:"+user.getPhones());
 		UserResponse userNew;
 		try {
 			userNew = userService.createUser(user);
-		} catch (MailFoundException e) {
+		} catch (MailExistsException e) {
 			logger.error("El correo ya existe");
 			Map<String, Object> body = new LinkedHashMap<>();
 			body.put("mensaje", e.getMessage());

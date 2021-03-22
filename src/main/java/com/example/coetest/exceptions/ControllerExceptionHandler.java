@@ -3,6 +3,7 @@ package com.example.coetest.exceptions;
 import java.util.LinkedHashMap;
 import java.util.Map;
 import java.util.stream.Collectors;
+
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.http.HttpHeaders;
@@ -31,8 +32,7 @@ public class ControllerExceptionHandler extends ResponseEntityExceptionHandler{
                 .map(x -> x.getDefaultMessage())
                 .collect(Collectors.joining(","));
 
-        body.put("mensaje", errors);
-        
+       body.put("mensaje", errors);
        logger.error(ex.getMessage(),ex);
        
        return new ResponseEntity<>(body, headers, status);

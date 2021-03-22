@@ -17,15 +17,14 @@ public class HibernateUserRepository implements UserRepository{
 
 	@Override
 	public UserResponse createUser(User user) {
-		logger.info("Se genera entidad");
-		logger.info("user "+user.toString());
+		logger.info("generating user entity: "+user.toString());
 		 UserEntity ue = springDataH2Repository.save(new UserEntity(user));
 		 return new UserResponse(ue.getId(), ue.getCreated(), ue.getModified(), ue.getLastLogin(), ue.getActive(), ue.getToken(), user.getName());
 	}
 
 	@Override
 	public UserEntity findByEmail(String mail) {
-		return springDataH2Repository.findTitleByEmail(mail);
+		return springDataH2Repository.findEntityByEmail(mail);
 	}
 
 

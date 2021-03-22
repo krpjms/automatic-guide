@@ -12,6 +12,5 @@ public interface SpringDataH2UserRepository extends JpaRepository<UserEntity, St
 	<S extends UserEntity> S save (S entity);
 	
 	@Query("SELECT usu FROM UserEntity usu WHERE usu.email = :mail") 
-	UserEntity findTitleByEmail(@Param("mail") String mail);
-
+	UserEntity findEntityByEmail(@Param("mail") String mail);
 }
